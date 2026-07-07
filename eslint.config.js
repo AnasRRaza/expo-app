@@ -1,0 +1,9 @@
+const { defineConfig, globalIgnores } = require('eslint/config');
+const expoConfig = require('eslint-config-expo/flat');
+const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
+
+module.exports = defineConfig([
+  expoConfig,
+  eslintPluginPrettierRecommended,
+  globalIgnores(['dist/*', '.expo/*', 'expo-env.d.ts', 'scripts/reset-project.js']),
+]);
