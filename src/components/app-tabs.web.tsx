@@ -1,12 +1,6 @@
 import { Pressable, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  TabList,
-  TabListProps,
-  Tabs,
-  TabSlot,
-  TabTrigger,
-  TabTriggerSlotProps,
-} from 'expo-router/ui';
+import type { TabListProps, TabTriggerSlotProps } from 'expo-router/ui';
+import { TabList, Tabs, TabSlot, TabTrigger } from 'expo-router/ui';
 import { SymbolView } from 'expo-symbols';
 
 import { Colors, MaxContentWidth, Spacing } from '@/constants/theme';

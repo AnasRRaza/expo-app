@@ -1,5 +1,6 @@
-import { PropsWithChildren, useState } from 'react';
+import { useState } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
+import type { PropsWithChildren } from 'react';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import { SymbolView } from 'expo-symbols';
 
