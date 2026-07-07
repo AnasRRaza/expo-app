@@ -5,6 +5,8 @@ import { scheduleOnRN } from 'react-native-worklets';
 import { Image } from 'expo-image';
 import * as SplashScreen from 'expo-splash-screen';
 
+import { Colors } from '@/constants/theme';
+
 const INITIAL_SCALE_FACTOR = Dimensions.get('screen').height / 90;
 const DURATION = 600;
 
@@ -144,7 +146,7 @@ const styles = StyleSheet.create({
   },
   splashOverlay: {
     ...StyleSheet.absoluteFill,
-    backgroundColor: '#208AEF',
+    backgroundColor: Colors.light.primary,
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 1000,
