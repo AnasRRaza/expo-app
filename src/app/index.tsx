@@ -1,4 +1,5 @@
 import { Platform, StyleSheet } from 'react-native';
+import { Switch } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Device from 'expo-device';
 
@@ -8,6 +9,7 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { WebBadge } from '@/components/web-badge';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
+import { useThemePreference } from '@/hooks/use-theme-preference';
 
 function getDevMenuHint() {
   if (Platform.OS === 'web') {
@@ -29,6 +31,8 @@ function getDevMenuHint() {
 }
 
 export default function HomeScreen() {
+  const { colorScheme, toggleColorScheme } = useThemePreference();
+
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
@@ -52,6 +56,10 @@ export default function HomeScreen() {
           <HintRow
             title="Fresh start"
             hint={<ThemedText type="code">npm run reset-project</ThemedText>}
+          />
+          <HintRow
+            title="Dark mode"
+            hint={<Switch value={colorScheme === 'dark'} onValueChange={toggleColorScheme} />}
           />
         </ThemedView>
 

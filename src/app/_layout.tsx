@@ -1,4 +1,3 @@
-import { useColorScheme } from 'react-native';
 import { PaperProvider } from 'react-native-paper';
 import { ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
@@ -11,11 +10,12 @@ import {
   NavigationDarkTheme,
   NavigationLightTheme,
 } from '@/constants/paper-theme';
+import { ThemePreferenceProvider, useThemePreference } from '@/hooks/use-theme-preference';
 
 void SplashScreen.preventAutoHideAsync();
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+function AppContent() {
+  const { colorScheme } = useThemePreference();
   const isDark = colorScheme === 'dark';
 
   return (
@@ -25,5 +25,13 @@ export default function TabLayout() {
         <AppTabs />
       </ThemeProvider>
     </PaperProvider>
+  );
+}
+
+export default function TabLayout() {
+  return (
+    <ThemePreferenceProvider>
+      <AppContent />
+    </ThemePreferenceProvider>
   );
 }

@@ -1,14 +1,15 @@
-import { StyleSheet, useColorScheme } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { version } from 'expo/package.json';
 import { Image } from 'expo-image';
 
 import { Spacing } from '@/constants/theme';
+import { useThemePreference } from '@/hooks/use-theme-preference';
 
 import { ThemedText } from './themed-text';
 import { ThemedView } from './themed-view';
 
 export function WebBadge() {
-  const scheme = useColorScheme();
+  const { colorScheme } = useThemePreference();
 
   return (
     <ThemedView style={styles.container}>
@@ -17,7 +18,7 @@ export function WebBadge() {
       </ThemedText>
       <Image
         source={
-          scheme === 'dark'
+          colorScheme === 'dark'
             ? require('@/assets/images/expo-badge-white.png')
             : require('@/assets/images/expo-badge.png')
         }
