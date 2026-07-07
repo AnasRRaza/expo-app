@@ -10,9 +10,17 @@ module.exports = defineConfig([
   expoConfig,
   {
     files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: __dirname,
+      },
+    },
     rules: {
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/consistent-type-imports': 'error',
+      '@typescript-eslint/no-floating-promises': 'error',
+      '@typescript-eslint/no-misused-promises': 'error',
     },
   },
   {
@@ -63,6 +71,10 @@ module.exports = defineConfig([
     rules: {
       ...jestPlugin.configs['flat/recommended'].rules,
     },
+  },
+  {
+    files: ['*.config.js'],
+    languageOptions: { globals: globals.node },
   },
   eslintPluginPrettierRecommended,
   globalIgnores(['dist/*', '.expo/*', 'expo-env.d.ts', 'scripts/reset-project.js']),
