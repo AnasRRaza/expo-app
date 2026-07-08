@@ -10,9 +10,9 @@ interface ButtonProps extends React.ComponentProps<typeof ThemeButton> {
 const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
   return (
     <ThemeButton
-      style={styles.button}
       textColor={props.mode === 'outlined' ? Colors.light.primary : Colors.white}
       {...props}
+      style={[styles.button, props.style]}
     >
       {children}
     </ThemeButton>

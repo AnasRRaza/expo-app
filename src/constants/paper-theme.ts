@@ -28,12 +28,14 @@ const lightColorOverrides = {
   primary: Colors.light.primary,
   background: Colors.light.background,
   text: Colors.light.text,
+  error: Colors.red,
 };
 
 const darkColorOverrides = {
   primary: Colors.dark.primary,
   background: Colors.dark.background,
   text: Colors.dark.text,
+  error: Colors.red,
 };
 
 // For expo-router's <ThemeProvider> (React Navigation) — keeps React

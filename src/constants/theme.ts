@@ -10,6 +10,7 @@ import { Platform } from 'react-native';
 export const Colors = {
   white: '#ffffff',
   black: '#000000',
+  red: '#FF3B3B',
   light: {
     text: '#000000',
     background: '#ffffff',
@@ -17,6 +18,9 @@ export const Colors = {
     backgroundSelected: '#E0E1E6',
     textSecondary: '#60646C',
     primary: '#2B844E',
+    inputBackground: '#FAFBFC',
+    inputBorder: '#E3DBDB',
+    mutedText: '#4A4A4A',
   },
   dark: {
     text: '#ffffff',
@@ -25,6 +29,10 @@ export const Colors = {
     backgroundSelected: '#2E3135',
     textSecondary: '#B0B4BA',
     primary: '#2B844E',
+    // TODO: replace with dark-mode-specific values
+    inputBackground: '#FAFBFC',
+    inputBorder: '#E3DBDB',
+    mutedText: '#4A4A4A',
   },
 } as const;
 
