@@ -40,9 +40,8 @@ export default function HomeScreen() {
         <ThemedText type="code" style={styles.code}>
           get started
         </ThemedText>
-
         <ThemedView>
-          <Button mode="contained" onPress={() => console.log('Pressed')}>
+          <Button mode="outlined" onPress={() => console.log('Pressed')}>
             Get Started
           </Button>
           <HintRow
