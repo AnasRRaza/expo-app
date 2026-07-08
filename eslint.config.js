@@ -41,7 +41,7 @@ module.exports = defineConfig([
       'react-native/no-color-literals': 'warn',
       'react-native/no-raw-text': [
         'warn',
-        { skip: ['ThemedText', 'TabButton', 'NativeTabs.Trigger.Label'] },
+        { skip: ['ThemedText', 'Button', 'TabButton', 'NativeTabs.Trigger.Label'] },
       ],
 
       'simple-import-sort/imports': [
