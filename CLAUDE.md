@@ -28,7 +28,6 @@ Package manager is **Yarn classic**. When adding an Expo/React-Native-ecosystem 
 - `commit-msg` → commitlint, **Conventional Commits required** (`feat:`, `fix:`, `chore:`, etc.) — non-conforming messages are rejected
 - `pre-push` → `yarn typecheck`
 - GitHub Actions (`.github/workflows/ci.yml`) reruns lint, format:check, typecheck, and test:ci on every PR/push to `main` — the actual gate, since local hooks can be bypassed with `--no-verify`
-- Dependabot (`.github/dependabot.yml`) opens weekly grouped PRs for npm and GitHub Actions dependencies
 
 ## Architecture
 
