@@ -68,6 +68,7 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "pretypecheck": "node ./scripts/ensure-expo-env.js",
     "typecheck": "tsc --noEmit",
     "test": "jest --watchAll",
     "test:ci": "jest --ci --coverage=false",
