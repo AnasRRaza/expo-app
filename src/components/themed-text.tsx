@@ -1,5 +1,6 @@
 import { Platform, StyleSheet, Text, type TextProps } from 'react-native';
 
+import { ManropeFonts } from '@/constants/fonts';
 import type { ThemeColor } from '@/constants/theme';
 import { Fonts } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
@@ -35,36 +36,38 @@ const styles = StyleSheet.create({
   small: {
     fontSize: 14,
     lineHeight: 20,
-    fontWeight: 500,
+    fontFamily: ManropeFonts.medium,
   },
   smallBold: {
     fontSize: 14,
     lineHeight: 20,
-    fontWeight: 700,
+    fontFamily: ManropeFonts.bold,
   },
   default: {
     fontSize: 16,
     lineHeight: 24,
-    fontWeight: 500,
+    fontFamily: ManropeFonts.medium,
   },
   title: {
     fontSize: 48,
-    fontWeight: 600,
+    fontFamily: ManropeFonts.semiBold,
     lineHeight: 52,
   },
   subtitle: {
     fontSize: 32,
     lineHeight: 44,
-    fontWeight: 600,
+    fontFamily: ManropeFonts.semiBold,
   },
   link: {
     lineHeight: 30,
     fontSize: 14,
+    fontFamily: ManropeFonts.regular,
   },
   linkPrimary: {
     lineHeight: 30,
     fontSize: 14,
     color: '#3c87f7',
+    fontFamily: ManropeFonts.regular,
   },
   code: {
     fontFamily: Fonts.mono,

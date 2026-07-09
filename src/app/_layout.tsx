@@ -4,6 +4,7 @@ import { Stack, ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
+import { useManropeFonts } from '@/constants/fonts';
 import {
   CombinedDarkTheme,
   CombinedLightTheme,
@@ -21,6 +22,7 @@ function AppContent() {
   const session = useAuthStore((state) => state.session);
   const onboardingComplete = useAuthStore((state) => state.onboardingComplete);
   const hasHydrated = useAuthStore((state) => state.hasHydrated);
+  const [fontsLoaded, fontError] = useManropeFonts();
 
   useEffect(() => {
     void useAuthStore.persist.rehydrate();
@@ -29,7 +31,7 @@ function AppContent() {
   return (
     <PaperProvider theme={isDark ? CombinedDarkTheme : CombinedLightTheme}>
       <ThemeProvider value={isDark ? NavigationDarkTheme : NavigationLightTheme}>
-        <AnimatedSplashOverlay ready={hasHydrated} />
+        <AnimatedSplashOverlay ready={hasHydrated && (fontsLoaded || !!fontError)} />
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Protected guard={!session}>
             <Stack.Screen name="(auth)" />

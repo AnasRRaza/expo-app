@@ -92,6 +92,7 @@ export default function LoginScreen() {
                     left={<Input.Icon icon="lock-outline" color={theme.mutedText} />}
                     right={
                       <Input.Icon
+                        color={theme.primary}
                         icon={hidePassword ? 'eye-off-outline' : 'eye-outline'}
                         forceTextInputFocus={false}
                         onPress={() => setHidePassword((prev) => !prev)}
