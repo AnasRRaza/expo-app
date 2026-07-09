@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'expo-router';
 
 import { ThemedText } from '@/components/themed-text';
@@ -6,11 +7,13 @@ import { ThemedView } from '@/components/themed-view';
 import Button from '@/components/ui/Button';
 
 export default function ProfessionalStatusScreen() {
+  const { t } = useTranslation();
+
   return (
     <ThemedView style={styles.container}>
-      <ThemedText type="title">Professional Status</ThemedText>
+      <ThemedText type="title">{t('onboarding.professionalStatus.title')}</ThemedText>
       <Link href="/self-employed-type" asChild>
-        <Button mode="contained">Continue</Button>
+        <Button mode="contained">{t('onboarding.professionalStatus.continue')}</Button>
       </Link>
     </ThemedView>
   );

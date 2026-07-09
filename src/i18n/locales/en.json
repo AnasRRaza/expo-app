@@ -1,0 +1,62 @@
+{
+  "welcome": {
+    "heading": "Smart <accent>Invoicing</accent> &\n<accent>Compliance</accent>",
+    "subheading": "Manage your finances, automate your expenses, and track KPIs effortlessly.",
+    "createAccount": "Create Account",
+    "login": "Login"
+  },
+  "login": {
+    "title": "Login",
+    "subtitle": "Enter your email and password to access Sandelia.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "domat@example.com",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "••••••••••••",
+    "forgotPassword": "Forgot password?",
+    "signIn": "Sign In",
+    "or": "OR",
+    "google": "Google",
+    "apple": "Apple",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up"
+  },
+  "signup": {
+    "title": "Signup",
+    "createAccountDev": "Create Account (dev)"
+  },
+  "onboarding": {
+    "fullName": {
+      "title": "Your Full Name",
+      "continue": "Continue"
+    },
+    "professionalStatus": {
+      "title": "Professional Status",
+      "continue": "Continue"
+    },
+    "selfEmployedType": {
+      "title": "Self-Employed",
+      "finishDev": "Finish (dev)"
+    }
+  },
+  "menu": {
+    "title": "Menu",
+    "logout": "Logout"
+  },
+  "tabs": {
+    "home": "Home",
+    "explore": "Explore"
+  },
+  "home": {
+    "darkMode": "Dark mode"
+  },
+  "validation": {
+    "email": {
+      "required": "Email address is required",
+      "invalid": "Invalid email address"
+    },
+    "password": {
+      "required": "Password is required"
+    },
+    "noWhitespace": "No white spaces are allowed"
+  }
+}

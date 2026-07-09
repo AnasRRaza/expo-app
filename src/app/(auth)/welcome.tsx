@@ -1,4 +1,5 @@
 import { ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { Trans, useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ms, s, vs } from 'react-native-size-matters';
 import { Image } from 'expo-image';
@@ -33,6 +34,7 @@ const LEO_HEIGHT = LEO_WIDTH / (750 / 1388);
 const LEO_VISIBLE_HEIGHT = LEO_HEIGHT * 0.75;
 
 export default function WelcomeScreen() {
+  const { t } = useTranslation();
   const insets = useSafeAreaInsets();
   const { height: windowHeight } = useWindowDimensions();
   // Tall mint hero (~half the screen, like the design). Leo is anchored to the
@@ -74,25 +76,25 @@ export default function WelcomeScreen() {
         </View>
 
         <View style={styles.content}>
-          <ThemedText style={styles.heading}>
-            Smart <Text style={styles.headingAccent}>Invoicing</Text> &{'\n'}
-            <Text style={styles.headingAccent}>Compliance</Text>
-          </ThemedText>
+          <Trans
+            i18nKey="welcome.heading"
+            parent={ThemedText}
+            style={styles.heading}
+            components={{ accent: <Text style={styles.headingAccent} /> }}
+          />
 
-          <Text style={styles.subheading}>
-            Manage your finances, automate your expenses, and track KPIs effortlessly.
-          </Text>
+          <Text style={styles.subheading}>{t('welcome.subheading')}</Text>
         </View>
 
         <View style={styles.buttonStack}>
           <Link href="/signup" asChild>
             <Button mode="contained" icon="chevron-right" contentStyle={styles.buttonContent}>
-              Create Account
+              {t('welcome.createAccount')}
             </Button>
           </Link>
           <Link href="/login" asChild>
             <Button mode="outlined" icon="chevron-right" contentStyle={styles.buttonContent}>
-              Login
+              {t('welcome.login')}
             </Button>
           </Link>
         </View>

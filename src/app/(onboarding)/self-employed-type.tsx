@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -6,13 +7,14 @@ import Button from '@/components/ui/Button';
 import { useAuthStore } from '@/stores/use-auth-store';
 
 export default function SelfEmployedTypeScreen() {
+  const { t } = useTranslation();
   const completeOnboarding = useAuthStore((state) => state.completeOnboarding);
 
   return (
     <ThemedView style={styles.container}>
-      <ThemedText type="title">Self-Employed</ThemedText>
+      <ThemedText type="title">{t('onboarding.selfEmployedType.title')}</ThemedText>
       <Button mode="contained" onPress={completeOnboarding}>
-        Finish (dev)
+        {t('onboarding.selfEmployedType.finishDev')}
       </Button>
     </ThemedView>
   );

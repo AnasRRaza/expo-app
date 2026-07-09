@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from 'react-native';
 import type { SubmitHandler } from 'react-hook-form';
 import { Controller, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ms, s, vs } from 'react-native-size-matters';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link } from 'expo-router';
-import type * as Yup from 'yup';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -14,13 +14,13 @@ import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import { useTheme } from '@/hooks/use-theme';
 import { useAuthStore } from '@/stores/use-auth-store';
-import { loginValidationSchema } from '@/utils/validationSchema';
-
-type TLoginForm = Yup.InferType<typeof loginValidationSchema>;
+import type { TLoginForm } from '@/utils/validationSchema';
+import { getLoginValidationSchema } from '@/utils/validationSchema';
 
 export default function LoginScreen() {
   const [hidePassword, setHidePassword] = useState(true);
 
+  const { t } = useTranslation();
   const theme = useTheme();
   const setSession = useAuthStore((state) => state.setSession);
 
@@ -30,7 +30,7 @@ export default function LoginScreen() {
     formState: { errors },
   } = useForm<TLoginForm>({
     mode: 'onSubmit',
-    resolver: yupResolver(loginValidationSchema),
+    resolver: yupResolver(getLoginValidationSchema(t)),
     defaultValues: {
       email: '',
       password: '',
@@ -54,9 +54,9 @@ export default function LoginScreen() {
             showsVerticalScrollIndicator={false}
           >
             <View style={styles.header}>
-              <ThemedText style={styles.title}>Login</ThemedText>
+              <ThemedText style={styles.title}>{t('login.title')}</ThemedText>
               <ThemedText type="small" themeColor="mutedText">
-                Enter your email and password to access Sandelia.
+                {t('login.subtitle')}
               </ThemedText>
             </View>
 
@@ -66,8 +66,8 @@ export default function LoginScreen() {
                 name="email"
                 render={({ field: { onChange, value } }) => (
                   <Input
-                    label="Email"
-                    placeholder="domat@example.com"
+                    label={t('login.emailLabel')}
+                    placeholder={t('login.emailPlaceholder')}
                     keyboardType="email-address"
                     autoCapitalize="none"
                     value={value}
@@ -84,8 +84,8 @@ export default function LoginScreen() {
                 name="password"
                 render={({ field: { onChange, value } }) => (
                   <Input
-                    label="Password"
-                    placeholder="••••••••••••"
+                    label={t('login.passwordLabel')}
+                    placeholder={t('login.passwordPlaceholder')}
                     secureTextEntry={hidePassword}
                     value={value}
                     onChangeText={onChange}
@@ -105,7 +105,7 @@ export default function LoginScreen() {
               />
 
               <ThemedText type="default" themeColor="primary" style={styles.forgotPassword}>
-                Forgot password?
+                {t('login.forgotPassword')}
               </ThemedText>
             </View>
 
@@ -115,33 +115,33 @@ export default function LoginScreen() {
               contentStyle={styles.signInContent}
               onPress={handleSubmit(onSubmit)}
             >
-              Sign In
+              {t('login.signIn')}
             </Button>
 
             <View style={styles.dividerRow}>
               <View style={[styles.dividerLine, { backgroundColor: theme.backgroundSelected }]} />
               <ThemedText type="small" themeColor="textSecondary">
-                OR
+                {t('login.or')}
               </ThemedText>
               <View style={[styles.dividerLine, { backgroundColor: theme.backgroundSelected }]} />
             </View>
 
             <View style={styles.socialRow}>
               <Button mode="outlined" icon="google" textColor={theme.text} style={styles.flex}>
-                Google
+                {t('login.google')}
               </Button>
               <Button mode="outlined" icon="apple" textColor={theme.text} style={styles.flex}>
-                Apple
+                {t('login.apple')}
               </Button>
             </View>
 
             <View style={styles.footer}>
               <ThemedText type="small" themeColor="textSecondary">
-                Don&apos;t have an account?{' '}
+                {t('login.noAccount')}{' '}
               </ThemedText>
               <Link href="/signup" asChild>
                 <ThemedText type="small" themeColor="primary">
-                  Sign up
+                  {t('login.signUp')}
                 </ThemedText>
               </Link>
             </View>

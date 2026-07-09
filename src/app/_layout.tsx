@@ -1,3 +1,5 @@
+import '@/i18n';
+
 import { useEffect } from 'react';
 import { PaperProvider } from 'react-native-paper';
 import { Stack, ThemeProvider } from 'expo-router';

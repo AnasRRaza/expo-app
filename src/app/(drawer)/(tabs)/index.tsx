@@ -1,4 +1,5 @@
 import { Platform, StyleSheet } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { Switch } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -25,6 +26,7 @@ function getDevMenuHint() {
 }
 
 export default function HomeScreen() {
+  const { t } = useTranslation();
   const { colorScheme, toggleColorScheme } = useThemePreference();
 
   return (
@@ -54,7 +56,7 @@ export default function HomeScreen() {
             hint={<ThemedText type="code">npm run reset-project</ThemedText>}
           />
           <HintRow
-            title="Dark mode"
+            title={t('home.darkMode')}
             hint={<Switch value={colorScheme === 'dark'} onValueChange={toggleColorScheme} />}
           />
         </ThemedView>

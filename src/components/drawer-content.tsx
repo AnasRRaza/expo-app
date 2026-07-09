@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   type DrawerContentComponentProps,
   DrawerContentScrollView,
@@ -8,12 +9,13 @@ import {
 import { useAuthStore } from '@/stores/use-auth-store';
 
 export function AppDrawerContent(props: DrawerContentComponentProps) {
+  const { t } = useTranslation();
   const signOut = useAuthStore((state) => state.signOut);
 
   return (
     <DrawerContentScrollView {...props}>
       <DrawerItemList {...props} />
-      <DrawerItem label="Logout" onPress={signOut} />
+      <DrawerItem label={t('menu.logout')} onPress={signOut} />
     </DrawerContentScrollView>
   );
 }

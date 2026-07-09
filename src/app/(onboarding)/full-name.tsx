@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'expo-router';
 
 import { ThemedText } from '@/components/themed-text';
@@ -6,11 +7,13 @@ import { ThemedView } from '@/components/themed-view';
 import Button from '@/components/ui/Button';
 
 export default function FullNameScreen() {
+  const { t } = useTranslation();
+
   return (
     <ThemedView style={styles.container}>
-      <ThemedText type="title">Your Full Name</ThemedText>
+      <ThemedText type="title">{t('onboarding.fullName.title')}</ThemedText>
       <Link href="/professional-status" asChild>
-        <Button mode="contained">Continue</Button>
+        <Button mode="contained">{t('onboarding.fullName.continue')}</Button>
       </Link>
     </ThemedView>
   );
