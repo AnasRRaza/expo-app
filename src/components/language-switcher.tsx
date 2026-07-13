@@ -4,11 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { Icon, Menu } from 'react-native-paper';
 import { s } from 'react-native-size-matters';
 
-import { Colors } from '@/constants/theme';
+import { useTheme } from '@/hooks/use-theme';
 import { LOCALE_META, SUPPORTED_LOCALES, type SupportedLocale } from '@/i18n';
 
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation();
+  const theme = useTheme();
   const [visible, setVisible] = useState(false);
 
   const currentLocale =
@@ -26,18 +27,21 @@ export default function LanguageSwitcher() {
       onDismiss={() => setVisible(false)}
       anchor={
         <Pressable
-          style={styles.anchor}
+          style={[
+            styles.anchor,
+            { backgroundColor: theme.inputBackground, borderColor: theme.primary },
+          ]}
           onPress={() => setVisible(true)}
           accessibilityRole="button"
           accessibilityLabel="Change language"
         >
           <Text style={styles.flag}>{current.flag}</Text>
-          <Text style={styles.label}>{current.label}</Text>
-          <Icon source="chevron-down" size={s(16)} color={Colors.light.primary} />
+          <Text style={[styles.label, { color: theme.textSecondary }]}>{current.label}</Text>
+          <Icon source="chevron-down" size={s(16)} color={theme.primary} />
         </Pressable>
       }
       style={styles.menuPosition}
-      contentStyle={styles.menuContent}
+      contentStyle={[styles.menuContent, { backgroundColor: theme.backgroundElement }]}
     >
       {SUPPORTED_LOCALES.map((locale) => {
         const isSelected = locale === currentLocale;
@@ -49,7 +53,11 @@ export default function LanguageSwitcher() {
             title={`${LOCALE_META[locale].flag}   ${LOCALE_META[locale].label}`}
             trailingIcon={isSelected ? 'check' : undefined}
             style={styles.menuItem}
-            titleStyle={[styles.menuItemTitle, isSelected && styles.menuItemTitleSelected]}
+            titleStyle={[
+              styles.menuItemTitle,
+              { color: theme.text },
+              isSelected && [styles.menuItemTitleSelected, { color: theme.primary }],
+            ]}
           />
         );
       })}
@@ -65,9 +73,7 @@ const styles = StyleSheet.create({
     paddingVertical: s(6),
     paddingHorizontal: s(8),
     borderRadius: s(8),
-    backgroundColor: Colors.white,
     borderWidth: 1,
-    borderColor: Colors.dark.primary,
   },
   flag: {
     fontSize: s(14),
@@ -75,14 +81,12 @@ const styles = StyleSheet.create({
   label: {
     fontSize: s(14),
     fontWeight: '600',
-    color: Colors.light.textSecondary,
   },
   menuPosition: {
     left: undefined,
     right: s(20),
   },
   menuContent: {
-    backgroundColor: Colors.white,
     borderRadius: s(10),
     paddingVertical: s(4),
     minWidth: s(120),
@@ -92,10 +96,8 @@ const styles = StyleSheet.create({
   },
   menuItemTitle: {
     fontSize: s(14),
-    color: Colors.light.text,
   },
   menuItemTitleSelected: {
     fontWeight: '700',
-    color: Colors.light.primary,
   },
 });

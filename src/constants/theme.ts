@@ -21,6 +21,10 @@ export const Colors = {
     inputBackground: '#FAFBFC',
     inputBorder: '#E3DBDB',
     mutedText: '#4A4A4A',
+    // Opaque (matches inputBackground) — Paper's Surface double-layering is a
+    // no-op on opaque colors, so no alpha compensation needed in light mode.
+    outlinedButtonBackground: '#FAFBFC',
+    outlinedButtonBorder: '#E3DBDB',
   },
   dark: {
     text: '#ffffff',
@@ -29,10 +33,14 @@ export const Colors = {
     backgroundSelected: '#2E3135',
     textSecondary: '#B0B4BA',
     primary: '#2B844E',
-    // TODO: replace with dark-mode-specific values
-    inputBackground: '#FAFBFC',
-    inputBorder: '#E3DBDB',
-    mutedText: '#4A4A4A',
+    inputBackground: 'rgba(255, 255, 255, 0.08)',
+    inputBorder: 'rgba(255, 255, 255, 0.18)',
+    mutedText: '#C7CBD1',
+    // Half of inputBackground's 0.08 alpha: Paper renders the outlined Button on
+    // a <Surface container> that paints the bg on two stacked layers, doubling
+    // translucency. 0.04 doubled ≈ 0.08, so the fill visually matches the inputs.
+    outlinedButtonBackground: 'rgba(255, 255, 255, 0.04)',
+    outlinedButtonBorder: 'rgba(255, 255, 255, 0.6)',
   },
 } as const;
 
