@@ -24,6 +24,29 @@
     "title": "Registro",
     "createAccountDev": "Crear cuenta (dev)"
   },
+  "forgotPassword": {
+    "title": "Olvidé mi contraseña",
+    "subtitle": "Introduce tu correo electrónico para restablecer tu contraseña",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "domat@example.com",
+    "continue": "Continuar",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "login": "Iniciar sesión"
+  },
+  "resetPassword": {
+    "title": "Establecer nueva contraseña",
+    "subtitle": "Introduce tu nueva contraseña para completar el restablecimiento.",
+    "newPasswordLabel": "Introduce la nueva contraseña",
+    "newPasswordPlaceholder": "••••••••••••",
+    "confirmPasswordLabel": "Confirma la nueva contraseña",
+    "confirmPasswordPlaceholder": "••••••••••••",
+    "continue": "Continuar"
+  },
+  "passwordChanged": {
+    "title": "¡Contraseña cambiada!",
+    "subtitle": "Inicia sesión en tu cuenta con tu nueva contraseña",
+    "continueToLogin": "Continuar al inicio de sesión"
+  },
   "onboarding": {
     "fullName": {
       "title": "Tu nombre completo",
@@ -55,7 +78,12 @@
       "invalid": "Correo electrónico no válido"
     },
     "password": {
-      "required": "La contraseña es obligatoria"
+      "required": "La contraseña es obligatoria",
+      "min": "La contraseña debe tener al menos 8 caracteres"
+    },
+    "confirmPassword": {
+      "required": "Confirma tu contraseña",
+      "mustMatch": "Las contraseñas no coinciden"
     },
     "noWhitespace": "No se permiten espacios en blanco"
   }

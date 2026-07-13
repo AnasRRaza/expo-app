@@ -14,3 +14,30 @@ export function getLoginValidationSchema(t: TFunction) {
 }
 
 export type TLoginForm = Yup.InferType<ReturnType<typeof getLoginValidationSchema>>;
+
+export function getForgotPasswordValidationSchema(t: TFunction) {
+  return Yup.object({
+    email: Yup.string()
+      .required(t('validation.email.required'))
+      .email(t('validation.email.invalid'))
+      .matches(/^\S*$/, t('validation.noWhitespace')),
+  });
+}
+
+export type TForgotPasswordForm = Yup.InferType<
+  ReturnType<typeof getForgotPasswordValidationSchema>
+>;
+
+export function getResetPasswordValidationSchema(t: TFunction) {
+  return Yup.object({
+    password: Yup.string()
+      .required(t('validation.password.required'))
+      .min(8, t('validation.password.min'))
+      .matches(/^\S*$/, t('validation.noWhitespace')),
+    confirmPassword: Yup.string()
+      .required(t('validation.confirmPassword.required'))
+      .oneOf([Yup.ref('password')], t('validation.confirmPassword.mustMatch')),
+  });
+}
+
+export type TResetPasswordForm = Yup.InferType<ReturnType<typeof getResetPasswordValidationSchema>>;

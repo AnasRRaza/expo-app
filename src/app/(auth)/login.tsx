@@ -108,9 +108,11 @@ export default function LoginScreen() {
                 )}
               />
 
-              <ThemedText type="default" themeColor="primary" style={styles.forgotPassword}>
-                {t('login.forgotPassword')}
-              </ThemedText>
+              <Link href="/forgot-password" asChild>
+                <ThemedText type="default" themeColor="primary" style={styles.forgotPassword}>
+                  {t('login.forgotPassword')}
+                </ThemedText>
+              </Link>
             </View>
 
             <Button

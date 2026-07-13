@@ -24,6 +24,29 @@
     "title": "Signup",
     "createAccountDev": "Create Account (dev)"
   },
+  "forgotPassword": {
+    "title": "Forgot password",
+    "subtitle": "Enter your email to reset your password",
+    "emailLabel": "Email",
+    "emailPlaceholder": "domat@example.com",
+    "continue": "Continue",
+    "alreadyHaveAccount": "Already have an account?",
+    "login": "Login"
+  },
+  "resetPassword": {
+    "title": "Set New Password",
+    "subtitle": "Enter your new password to complete the reset process.",
+    "newPasswordLabel": "Enter New Password",
+    "newPasswordPlaceholder": "••••••••••••",
+    "confirmPasswordLabel": "Confirm New Password",
+    "confirmPasswordPlaceholder": "••••••••••••",
+    "continue": "Continue"
+  },
+  "passwordChanged": {
+    "title": "Password Changed!",
+    "subtitle": "Sign in to your account with your new password",
+    "continueToLogin": "Continue to Login"
+  },
   "onboarding": {
     "fullName": {
       "title": "Your Full Name",
@@ -55,7 +78,12 @@
       "invalid": "Invalid email address"
     },
     "password": {
-      "required": "Password is required"
+      "required": "Password is required",
+      "min": "Password must be at least 8 characters"
+    },
+    "confirmPassword": {
+      "required": "Please confirm your password",
+      "mustMatch": "Passwords do not match"
     },
     "noWhitespace": "No white spaces are allowed"
   }
