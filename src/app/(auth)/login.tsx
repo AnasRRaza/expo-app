@@ -8,8 +8,9 @@ import { ms, s, vs } from 'react-native-size-matters';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link } from 'expo-router';
 
+import LanguageSwitcher from '@/components/language-switcher';
+import { ScreenBackground } from '@/components/screen-background';
 import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import { useTheme } from '@/hooks/use-theme';
@@ -42,7 +43,7 @@ export default function LoginScreen() {
   };
 
   return (
-    <ThemedView style={styles.container}>
+    <ScreenBackground style={styles.container}>
       <SafeAreaView edges={['top']} style={styles.safeArea}>
         <KeyboardAvoidingView
           style={styles.flex}
@@ -54,7 +55,10 @@ export default function LoginScreen() {
             showsVerticalScrollIndicator={false}
           >
             <View style={styles.header}>
-              <ThemedText style={styles.title}>{t('login.title')}</ThemedText>
+              <View style={styles.titleRow}>
+                <ThemedText style={styles.title}>{t('login.title')}</ThemedText>
+                <LanguageSwitcher />
+              </View>
               <ThemedText type="small" themeColor="mutedText">
                 {t('login.subtitle')}
               </ThemedText>
@@ -148,7 +152,7 @@ export default function LoginScreen() {
           </ScrollView>
         </KeyboardAvoidingView>
       </SafeAreaView>
-    </ThemedView>
+    </ScreenBackground>
   );
 }
 
@@ -170,6 +174,11 @@ const styles = StyleSheet.create({
   header: {
     marginTop: vs(16),
     gap: vs(8),
+  },
+  titleRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   title: {
     fontSize: ms(28),
