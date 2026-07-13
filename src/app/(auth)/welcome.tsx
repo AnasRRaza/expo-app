@@ -7,6 +7,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Link } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 
+import LanguageSwitcher from '@/components/language-switcher';
 import { ThemedText } from '@/components/themed-text';
 import Button from '@/components/ui/Button';
 import { Colors } from '@/constants/theme';
@@ -34,7 +35,7 @@ const LEO_HEIGHT = LEO_WIDTH / (750 / 1388);
 const LEO_VISIBLE_HEIGHT = LEO_HEIGHT * 0.75;
 
 export default function WelcomeScreen() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const insets = useSafeAreaInsets();
   const { height: windowHeight } = useWindowDimensions();
   // Tall mint hero (~half the screen, like the design). Leo is anchored to the
@@ -73,10 +74,14 @@ export default function WelcomeScreen() {
             end={{ x: 0.5, y: 1 }}
             style={styles.fadeOverlay}
           />
+          <View style={[styles.languageSwitcher, { top: insets.top + vs(12) }]}>
+            <LanguageSwitcher />
+          </View>
         </View>
 
         <View style={styles.content}>
           <Trans
+            key={i18n.language}
             i18nKey="welcome.heading"
             parent={ThemedText}
             style={styles.heading}
@@ -133,6 +138,10 @@ const styles = StyleSheet.create({
     bottom: 0,
     height: vs(96),
     pointerEvents: 'none',
+  },
+  languageSwitcher: {
+    position: 'absolute',
+    right: s(20),
   },
   content: {
     marginTop: 'auto',

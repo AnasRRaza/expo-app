@@ -1,0 +1,62 @@
+{
+  "welcome": {
+    "heading": "Facturación <accent>Inteligente</accent> y\n<accent>Cumplimiento</accent>",
+    "subheading": "Gestiona tus finanzas, automatiza tus gastos y supervisa tus KPI sin esfuerzo.",
+    "createAccount": "Crear cuenta",
+    "login": "Iniciar sesión"
+  },
+  "login": {
+    "title": "Iniciar sesión",
+    "subtitle": "Introduce tu correo electrónico y contraseña para acceder a Sandelia.",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "domat@example.com",
+    "passwordLabel": "Contraseña",
+    "passwordPlaceholder": "••••••••••••",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "signIn": "Iniciar sesión",
+    "or": "O",
+    "google": "Google",
+    "apple": "Apple",
+    "noAccount": "¿No tienes una cuenta?",
+    "signUp": "Regístrate"
+  },
+  "signup": {
+    "title": "Registro",
+    "createAccountDev": "Crear cuenta (dev)"
+  },
+  "onboarding": {
+    "fullName": {
+      "title": "Tu nombre completo",
+      "continue": "Continuar"
+    },
+    "professionalStatus": {
+      "title": "Situación profesional",
+      "continue": "Continuar"
+    },
+    "selfEmployedType": {
+      "title": "Trabajador autónomo",
+      "finishDev": "Finalizar (dev)"
+    }
+  },
+  "menu": {
+    "title": "Menú",
+    "logout": "Cerrar sesión"
+  },
+  "tabs": {
+    "home": "Inicio",
+    "explore": "Explorar"
+  },
+  "home": {
+    "darkMode": "Modo oscuro"
+  },
+  "validation": {
+    "email": {
+      "required": "El correo electrónico es obligatorio",
+      "invalid": "Correo electrónico no válido"
+    },
+    "password": {
+      "required": "La contraseña es obligatoria"
+    },
+    "noWhitespace": "No se permiten espacios en blanco"
+  }
+}
