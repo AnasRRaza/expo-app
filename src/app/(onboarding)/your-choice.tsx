@@ -8,22 +8,24 @@ import AuthStepHeader from '@/components/auth-step-header';
 import { ScreenBackground } from '@/components/screen-background';
 import { ThemedText } from '@/components/themed-text';
 import OptionCard from '@/components/ui/option-card';
-import { INTENTION_OPTIONS, ONBOARDING_TOTAL_STEPS } from '@/constants/onboarding';
-import type { Intention } from '@/stores/use-auth-store';
+import {
+  ONBOARDING_STEP,
+  ONBOARDING_TOTAL_STEPS,
+  SELF_EMPLOYED_CHOICE_OPTIONS,
+} from '@/constants/onboarding';
+import type { SelfEmployedChoice } from '@/stores/use-auth-store';
 import { useAuthStore } from '@/stores/use-auth-store';
 
-export default function IntentionsScreen() {
+export default function YourChoiceScreen() {
   const { t } = useTranslation();
   const router = useRouter();
-  const intention = useAuthStore((state) => state.onboarding.intention);
+  const selfEmployedChoice = useAuthStore((state) => state.onboarding.selfEmployedChoice);
   const setOnboardingData = useAuthStore((state) => state.setOnboardingData);
 
-  const handleSelect = (value: Intention) => {
-    setOnboardingData({ intention: value });
-    // want-to → choose a status; dont-plan / not-sure → advisor off-ramps.
-    if (value === 'want-to') router.push('/your-choice');
-    else if (value === 'dont-plan') router.push('/no-problem');
-    else router.push('/no-worries');
+  const handleSelect = (value: SelfEmployedChoice) => {
+    setOnboardingData({ selfEmployedChoice: value });
+    // All choices lead to the advisor off-ramp for now.
+    router.push('/no-problem');
   };
 
   return (
@@ -34,25 +36,29 @@ export default function IntentionsScreen() {
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
         >
-          <AuthStepHeader step={4} totalSteps={ONBOARDING_TOTAL_STEPS} />
+          <AuthStepHeader
+            step={ONBOARDING_STEP.yourChoice}
+            totalSteps={ONBOARDING_TOTAL_STEPS}
+            backVariant="text"
+          />
 
           <View style={styles.header}>
-            <ThemedText style={styles.title}>{t('onboarding.intentions.title')}</ThemedText>
+            <ThemedText style={styles.title}>{t('onboarding.yourChoice.title')}</ThemedText>
             <ThemedText type="small" themeColor="mutedText">
-              {t('onboarding.intentions.subtitle')}
+              {t('onboarding.yourChoice.subtitle')}
             </ThemedText>
           </View>
 
           <ThemedText type="small" style={styles.question}>
-            {t('onboarding.intentions.question')}
+            {t('onboarding.yourChoice.question')}
           </ThemedText>
 
           <View style={styles.options}>
-            {INTENTION_OPTIONS.map((option) => (
+            {SELF_EMPLOYED_CHOICE_OPTIONS.map((option) => (
               <OptionCard
                 key={option.value}
                 label={t(option.labelKey)}
-                selected={intention === option.value}
+                selected={selfEmployedChoice === option.value}
                 onPress={() => handleSelect(option.value)}
               />
             ))}

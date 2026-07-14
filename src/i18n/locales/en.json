@@ -251,6 +251,26 @@
       "label": "Company Name",
       "placeholder": "Sky Industries",
       "continue": "Continue"
+    },
+    "yourChoice": {
+      "title": "Your Choice",
+      "subtitle": "Select your self-employed status.",
+      "question": "Which status would you choose?",
+      "soleTrader": "Start as a sole trader (self-employed individual)",
+      "incorporate": "Incorporate a company",
+      "dontKnow": "I don't know"
+    },
+    "noProblem": {
+      "title": "No problem!",
+      "subtitle": "Sandelia is designed for self-employed professionals. Visit our guide to learn about the advantages and obligations of the self-employed status."
+    },
+    "noWorries": {
+      "title": "No worries!",
+      "subtitle": "Our fiscal coaches are available for a free call to help you take the next step."
+    },
+    "advisor": {
+      "learn": "Learn about the self-employed status",
+      "talkToAdvisor": "Talk to an advisor"
     }
   },
   "common": {

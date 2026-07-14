@@ -251,6 +251,26 @@
       "label": "Nombre de la empresa",
       "placeholder": "Sky Industries",
       "continue": "Continuar"
+    },
+    "yourChoice": {
+      "title": "Tu elección",
+      "subtitle": "Selecciona tu situación como autónomo.",
+      "question": "¿Qué situación elegirías?",
+      "soleTrader": "Empezar como autónomo (persona física)",
+      "incorporate": "Constituir una empresa",
+      "dontKnow": "No lo sé"
+    },
+    "noProblem": {
+      "title": "¡No hay problema!",
+      "subtitle": "Sandelia está diseñada para profesionales autónomos. Consulta nuestra guía para conocer las ventajas y obligaciones del régimen de autónomo."
+    },
+    "noWorries": {
+      "title": "¡Tranquilo!",
+      "subtitle": "Nuestros asesores fiscales están disponibles para una llamada gratuita y ayudarte a dar el siguiente paso."
+    },
+    "advisor": {
+      "learn": "Conoce el régimen de autónomo",
+      "talkToAdvisor": "Habla con un asesor"
     }
   },
   "common": {

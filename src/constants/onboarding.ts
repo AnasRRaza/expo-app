@@ -3,6 +3,7 @@ import type {
   Intention,
   OccupationType,
   ProfessionalStatus,
+  SelfEmployedChoice,
   SelfEmployedType,
   VatDeclaration,
 } from '@/stores/use-auth-store';
@@ -26,6 +27,10 @@ export const ONBOARDING_STEP = {
   companyType: 5,
   companyName: 6,
   companyDetails: 7,
+  // Intentions branch (off-ramps)
+  yourChoice: 5,
+  noProblem: 5,
+  noWorries: 5,
   // Shared tail
   selectPlan: 9,
   setPassword: 10,
@@ -53,6 +58,12 @@ export const INTENTION_OPTIONS: Option<Intention>[] = [
   { value: 'want-to', labelKey: 'onboarding.intentions.wantTo' },
   { value: 'dont-plan', labelKey: 'onboarding.intentions.dontPlan' },
   { value: 'not-sure', labelKey: 'onboarding.intentions.notSure' },
+];
+
+export const SELF_EMPLOYED_CHOICE_OPTIONS: Option<SelfEmployedChoice>[] = [
+  { value: 'sole-trader', labelKey: 'onboarding.yourChoice.soleTrader' },
+  { value: 'incorporate', labelKey: 'onboarding.yourChoice.incorporate' },
+  { value: 'dont-know', labelKey: 'onboarding.yourChoice.dontKnow' },
 ];
 
 // ── Natural Self-Employment (Path A) ──────────────────────────────────────────

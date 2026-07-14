@@ -10,6 +10,7 @@ type Session = {
 export type ProfessionalStatus = 'yes' | 'no' | 'dont-know';
 export type SelfEmployedType = 'natural-person' | 'company-director';
 export type Intention = 'want-to' | 'dont-plan' | 'not-sure';
+export type SelfEmployedChoice = 'sole-trader' | 'incorporate' | 'dont-know';
 export type OccupationType = 'secondary' | 'main' | 'student' | 'retired';
 export type VatDeclaration = 'quarterly' | 'monthly' | 'small-business-exemption' | 'vat-exempt';
 export type CompanyType = 'srl-bv' | 'sa-nv' | 'snc-vof' | 'asbl-vzw' | 'other';
@@ -21,6 +22,7 @@ type OnboardingData = {
   professionalStatus?: ProfessionalStatus;
   selfEmployedType?: SelfEmployedType;
   intention?: Intention;
+  selfEmployedChoice?: SelfEmployedChoice;
   // Natural Self-Employment (Path A)
   occupationType?: OccupationType;
   business?: { confirmed?: boolean; vatNumber?: string };
