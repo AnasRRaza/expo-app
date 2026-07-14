@@ -8,18 +8,18 @@ import AuthStepHeader from '@/components/auth-step-header';
 import { ScreenBackground } from '@/components/screen-background';
 import { ThemedText } from '@/components/themed-text';
 import OptionCard from '@/components/ui/option-card';
-import { ONBOARDING_TOTAL_STEPS, SELF_EMPLOYED_TYPE_OPTIONS } from '@/constants/onboarding';
-import type { SelfEmployedType } from '@/stores/use-auth-store';
+import { INTENTION_OPTIONS, ONBOARDING_TOTAL_STEPS } from '@/constants/onboarding';
+import type { Intention } from '@/stores/use-auth-store';
 import { useAuthStore } from '@/stores/use-auth-store';
 
-export default function SelfEmployedTypeScreen() {
+export default function IntentionsScreen() {
   const { t } = useTranslation();
   const router = useRouter();
-  const selfEmployedType = useAuthStore((state) => state.onboarding.selfEmployedType);
+  const intention = useAuthStore((state) => state.onboarding.intention);
   const setOnboardingData = useAuthStore((state) => state.setOnboardingData);
 
-  const handleSelect = (value: SelfEmployedType) => {
-    setOnboardingData({ selfEmployedType: value });
+  const handleSelect = (value: Intention) => {
+    setOnboardingData({ intention: value });
     router.push('/next-steps');
   };
 
@@ -34,22 +34,22 @@ export default function SelfEmployedTypeScreen() {
           <AuthStepHeader step={4} totalSteps={ONBOARDING_TOTAL_STEPS} />
 
           <View style={styles.header}>
-            <ThemedText style={styles.title}>{t('onboarding.selfEmployed.title')}</ThemedText>
+            <ThemedText style={styles.title}>{t('onboarding.intentions.title')}</ThemedText>
             <ThemedText type="small" themeColor="mutedText">
-              {t('onboarding.selfEmployed.subtitle')}
+              {t('onboarding.intentions.subtitle')}
             </ThemedText>
           </View>
 
           <ThemedText type="small" style={styles.question}>
-            {t('onboarding.selfEmployed.question')}
+            {t('onboarding.intentions.question')}
           </ThemedText>
 
           <View style={styles.options}>
-            {SELF_EMPLOYED_TYPE_OPTIONS.map((option) => (
+            {INTENTION_OPTIONS.map((option) => (
               <OptionCard
                 key={option.value}
                 label={t(option.labelKey)}
-                selected={selfEmployedType === option.value}
+                selected={intention === option.value}
                 onPress={() => handleSelect(option.value)}
               />
             ))}

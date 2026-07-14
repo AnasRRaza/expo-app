@@ -21,8 +21,16 @@
     "signUp": "Regístrate"
   },
   "signup": {
-    "title": "Registro",
-    "createAccountDev": "Crear cuenta (dev)"
+    "title": "Introduce tu correo electrónico",
+    "subtitle": "Introduce tu correo electrónico registrado.",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "domat@example.com",
+    "continue": "Continuar",
+    "or": "O",
+    "google": "Google",
+    "apple": "Apple",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "login": "Iniciar sesión"
   },
   "forgotPassword": {
     "title": "Olvidé mi contraseña",
@@ -50,15 +58,39 @@
   "onboarding": {
     "fullName": {
       "title": "Tu nombre completo",
+      "subtitle": "Introduce tu nombre tal como aparece en tu documento de identidad.",
+      "firstNameLabel": "Nombre",
+      "firstNamePlaceholder": "Juan",
+      "lastNameLabel": "Apellido",
+      "lastNamePlaceholder": "Pérez",
       "continue": "Continuar"
     },
     "professionalStatus": {
       "title": "Situación profesional",
-      "continue": "Continuar"
+      "subtitle": "Selecciona tu situación profesional.",
+      "question": "¿Ya eres trabajador autónomo?",
+      "yes": "Sí",
+      "no": "No",
+      "dontKnow": "No lo sé"
     },
-    "selfEmployedType": {
+    "selfEmployed": {
       "title": "Trabajador autónomo",
-      "finishDev": "Finalizar (dev)"
+      "subtitle": "Selecciona tu situación como autónomo.",
+      "question": "¿Cuál es tu situación?",
+      "naturalPerson": "Autónomo como persona física",
+      "companyDirector": "Administrador de empresa / Autónomo a través de una sociedad"
+    },
+    "intentions": {
+      "title": "Tus intenciones",
+      "subtitle": "Intenciones respecto al empleo.",
+      "question": "¿Planeas hacerte autónomo?",
+      "wantTo": "Quiero hacerme autónomo",
+      "dontPlan": "No planeo hacerme autónomo",
+      "notSure": "Aún no estoy seguro"
+    },
+    "nextSteps": {
+      "title": "Casi listo",
+      "message": "Más pasos próximamente."
     }
   },
   "menu": {
@@ -84,6 +116,12 @@
     "confirmPassword": {
       "required": "Confirma tu contraseña",
       "mustMatch": "Las contraseñas no coinciden"
+    },
+    "firstName": {
+      "required": "El nombre es obligatorio"
+    },
+    "lastName": {
+      "required": "El apellido es obligatorio"
     },
     "noWhitespace": "No se permiten espacios en blanco"
   }

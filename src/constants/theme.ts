@@ -21,6 +21,8 @@ export const Colors = {
     inputBackground: '#FAFBFC',
     inputBorder: '#E3DBDB',
     mutedText: '#4A4A4A',
+    // Faint green tint behind a selected OptionCard (paired with a primary border/text).
+    optionSelectedBackground: '#EAF3EE',
     // Opaque (matches inputBackground) — Paper's Surface double-layering is a
     // no-op on opaque colors, so no alpha compensation needed in light mode.
     outlinedButtonBackground: '#FAFBFC',
@@ -36,6 +38,8 @@ export const Colors = {
     inputBackground: 'rgba(255, 255, 255, 0.08)',
     inputBorder: 'rgba(255, 255, 255, 0.18)',
     mutedText: '#C7CBD1',
+    // Translucent green tint behind a selected OptionCard (paired with a primary border/text).
+    optionSelectedBackground: 'rgba(43, 132, 78, 0.18)',
     // Half of inputBackground's 0.08 alpha: Paper renders the outlined Button on
     // a <Surface container> that paints the bg on two stacked layers, doubling
     // translucency. 0.04 doubled ≈ 0.08, so the fill visually matches the inputs.

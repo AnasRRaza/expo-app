@@ -21,8 +21,16 @@
     "signUp": "Sign up"
   },
   "signup": {
-    "title": "Signup",
-    "createAccountDev": "Create Account (dev)"
+    "title": "Enter Your Email",
+    "subtitle": "Enter your registered email address.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "domat@example.com",
+    "continue": "Continue",
+    "or": "OR",
+    "google": "Google",
+    "apple": "Apple",
+    "alreadyHaveAccount": "Already have an account?",
+    "login": "Login"
   },
   "forgotPassword": {
     "title": "Forgot password",
@@ -50,15 +58,39 @@
   "onboarding": {
     "fullName": {
       "title": "Your Full Name",
+      "subtitle": "Please enter your name as it appears on your government ID.",
+      "firstNameLabel": "First Name",
+      "firstNamePlaceholder": "John",
+      "lastNameLabel": "Last Name",
+      "lastNamePlaceholder": "Smith",
       "continue": "Continue"
     },
     "professionalStatus": {
       "title": "Professional Status",
-      "continue": "Continue"
+      "subtitle": "Select your professional status.",
+      "question": "Are you already self-employed?",
+      "yes": "Yes",
+      "no": "No",
+      "dontKnow": "I don't know"
     },
-    "selfEmployedType": {
+    "selfEmployed": {
       "title": "Self-Employed",
-      "finishDev": "Finish (dev)"
+      "subtitle": "Select your self-employed status.",
+      "question": "What is your status?",
+      "naturalPerson": "Self-employed as a natural person",
+      "companyDirector": "Company director / Self-employed through a company"
+    },
+    "intentions": {
+      "title": "Your Intentions",
+      "subtitle": "Intentions regarding employment.",
+      "question": "Do you plan to become self-employed?",
+      "wantTo": "I want to become self-employed",
+      "dontPlan": "I don't plan to become self-employed",
+      "notSure": "I'm not sure yet"
+    },
+    "nextSteps": {
+      "title": "Almost there",
+      "message": "More steps coming soon."
     }
   },
   "menu": {
@@ -84,6 +116,12 @@
     "confirmPassword": {
       "required": "Please confirm your password",
       "mustMatch": "Passwords do not match"
+    },
+    "firstName": {
+      "required": "First name is required"
+    },
+    "lastName": {
+      "required": "Last name is required"
     },
     "noWhitespace": "No white spaces are allowed"
   }

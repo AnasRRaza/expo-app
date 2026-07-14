@@ -7,11 +7,26 @@ type Session = {
   token: string;
 };
 
+export type ProfessionalStatus = 'yes' | 'no' | 'dont-know';
+export type SelfEmployedType = 'natural-person' | 'company-director';
+export type Intention = 'want-to' | 'dont-plan' | 'not-sure';
+
+type OnboardingData = {
+  email?: string;
+  firstName?: string;
+  lastName?: string;
+  professionalStatus?: ProfessionalStatus;
+  selfEmployedType?: SelfEmployedType;
+  intention?: Intention;
+};
+
 type AuthState = {
   session: Session | null;
   onboardingComplete: boolean;
+  onboarding: OnboardingData;
   hasHydrated: boolean;
   setSession: (session: Session | null) => void;
+  setOnboardingData: (partial: Partial<OnboardingData>) => void;
   completeOnboarding: () => void;
   signOut: () => void;
 };
@@ -21,10 +36,13 @@ export const useAuthStore = create<AuthState>()(
     (set) => ({
       session: null,
       onboardingComplete: false,
+      onboarding: {},
       hasHydrated: false,
       setSession: (session) => set({ session }),
+      setOnboardingData: (partial) =>
+        set((state) => ({ onboarding: { ...state.onboarding, ...partial } })),
       completeOnboarding: () => set({ onboardingComplete: true }),
-      signOut: () => set({ session: null, onboardingComplete: false }),
+      signOut: () => set({ session: null, onboardingComplete: false, onboarding: {} }),
     }),
     {
       name: 'sendelia-auth-storage',
@@ -38,6 +56,7 @@ export const useAuthStore = create<AuthState>()(
       partialize: (state) => ({
         session: state.session,
         onboardingComplete: state.onboardingComplete,
+        onboarding: state.onboarding,
       }),
       onRehydrateStorage: () => () => {
         useAuthStore.setState({ hasHydrated: true });

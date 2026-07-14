@@ -11,14 +11,18 @@ interface AuthStepHeaderProps {
   /** 1-indexed current step. */
   step: number;
   totalSteps: number;
+  /** Overrides the default back behavior (used when there's no in-stack history to return to). */
+  onBack?: () => void;
 }
 
-export default function AuthStepHeader({ step, totalSteps }: AuthStepHeaderProps) {
+export default function AuthStepHeader({ step, totalSteps, onBack }: AuthStepHeaderProps) {
   const theme = useTheme();
   const router = useRouter();
 
   const handleBack = () => {
-    if (router.canGoBack()) {
+    if (onBack) {
+      onBack();
+    } else if (router.canGoBack()) {
       router.back();
     } else {
       router.replace('/login');

@@ -41,3 +41,23 @@ export function getResetPasswordValidationSchema(t: TFunction) {
 }
 
 export type TResetPasswordForm = Yup.InferType<ReturnType<typeof getResetPasswordValidationSchema>>;
+
+export function getSignupValidationSchema(t: TFunction) {
+  return Yup.object({
+    email: Yup.string()
+      .required(t('validation.email.required'))
+      .email(t('validation.email.invalid'))
+      .matches(/^\S*$/, t('validation.noWhitespace')),
+  });
+}
+
+export type TSignupForm = Yup.InferType<ReturnType<typeof getSignupValidationSchema>>;
+
+export function getFullNameValidationSchema(t: TFunction) {
+  return Yup.object({
+    firstName: Yup.string().required(t('validation.firstName.required')),
+    lastName: Yup.string().required(t('validation.lastName.required')),
+  });
+}
+
+export type TFullNameForm = Yup.InferType<ReturnType<typeof getFullNameValidationSchema>>;
