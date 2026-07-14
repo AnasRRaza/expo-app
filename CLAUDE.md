@@ -31,11 +31,35 @@ Package manager is **Yarn classic**. When adding an Expo/React-Native-ecosystem 
 
 ## Architecture
 
-**Routing**: [Expo Router](https://docs.expo.dev/router/introduction) with `src/app` as the router root (`main` in package.json is `expo-router/entry`). `src/app/_layout.tsx` is the root layout — it composes the theme providers, splash screen, and tab navigator.
+Product ships to **iOS/Android only** — native is the source of truth. `*.web.tsx` variants and web-export guards exist (and must keep type-checking / not crash the static web prerender), but don't treat web behavior as a shipping requirement.
+
+**Routing**: [Expo Router](https://docs.expo.dev/router/introduction) with `src/app` as the router root (`main` in package.json is `expo-router/entry`). `src/app/_layout.tsx` composes the providers (`ThemePreferenceProvider` → `PaperProvider` → React Navigation `ThemeProvider`) and gates a single `Stack` of three route groups with `Stack.Protected`:
+
+- `(auth)` — shown when there is **no** session (`welcome`, `login`, `signup`, `forgot-password`, `reset-password`, `password-changed`).
+- `(onboarding)` — shown when there is a session but `onboardingComplete` is false (`full-name`, `professional-status`, `self-employed-type`, `intentions`, `next-steps`). Screens branch on collected answers (e.g. `professional-status` routes to `self-employed-type` vs `intentions`).
+- `(drawer)` — the authenticated app: an `expo-router/drawer` (`AppDrawerContent`) wrapping a `(tabs)` group. Tabs re-export `@/components/app-tabs`.
+
+The `guard` values come from `useAuthStore`, so **navigation between the three areas is driven by store state, not `router.push` to another group** — set `session` / call `completeOnboarding()` and the protected stack swaps groups.
 
 **Path aliases** (`tsconfig.json`): `@/*` → `src/*`, `@/assets/*` → `assets/*`.
 
+**Responsive sizing**: screens scale spacing/font sizes with `react-native-size-matters` (`s`/`vs`/`ms`) rather than raw pixels — match that in new screens.
+
 **Platform-specific files**: Metro resolves `*.web.ts(x)` over the base file when bundling for web (e.g. `animated-icon.tsx` vs `animated-icon.web.tsx`, `use-color-scheme.ts` vs `.web.ts`, `app-tabs.tsx` vs `app-tabs.web.tsx`). Native tab bar uses `expo-router/unstable-native-tabs` (`app-tabs.tsx`); the web tab bar is a hand-built `expo-router/ui` + `TabButton`/`CustomTabList` implementation (`app-tabs.web.tsx`) since native tabs don't render on web. When touching tab/nav-adjacent behavior, check both files.
+
+### State & auth (`src/stores/use-auth-store.ts`)
+
+Single Zustand store (`useAuthStore`) is the source of truth for `session`, `onboardingComplete`, and the accumulated `onboarding` data; it's persisted to `AsyncStorage` via `persist` middleware (key `sendelia-auth-storage`). Onboarding screens read/write partial answers with `setOnboardingData(...)`.
+
+Persistence uses `skipHydration: true` — rehydration is triggered **manually** from a `useEffect` in the root layout (`useAuthStore.persist.rehydrate()`), not on store creation. Reason (documented in the store): Expo Router's static web export evaluates this module on Node during prerender, and AsyncStorage's web impl touches `window.localStorage`, so auto-rehydration would crash with `window is not defined`. `hasHydrated` gates the animated splash overlay so the UI doesn't flash the wrong route group before persisted state loads. Keep `partialize` in sync when adding persisted fields.
+
+### Internationalization (`src/i18n`)
+
+`react-i18next` + `i18next`, initialized in `src/i18n/index.ts` (imported for side effects at the top of the root layout). Locales are static JSON (`locales/en.json`, `locales/es.json`); passing `resources` inline makes init **synchronous**, so `t()` returns real strings immediately with no splash gating. Initial language comes from `expo-localization`, falling back to `en`. All user-facing copy goes through `t('...')` keys — don't hardcode strings in screens. `LanguageSwitcher` toggles between `SUPPORTED_LOCALES`. Note: `src/i18n/index.ts` is also a Jest `setupFiles` entry so `t()` works in tests.
+
+### Forms & validation
+
+Forms use `react-hook-form` with `@hookform/resolvers`'s `yupResolver`. Yup schemas live in `src/utils/validationSchema.ts` as **factory functions** `getXValidationSchema(t)` that take the i18n `t` so validation messages are localized; the matching form type is derived with `Yup.InferType<ReturnType<typeof getXValidationSchema>>` (e.g. `TLoginForm`). Add new forms the same way rather than inlining schemas or hardcoding messages.
 
 ### Theming
 
@@ -43,14 +67,14 @@ Theme state has one source of truth: `src/hooks/use-theme-preference.tsx` (`Them
 
 Two parallel theme systems are wired together in `_layout.tsx`:
 
-- `src/constants/theme.ts` — hand-rolled `Colors.light`/`Colors.dark` tokens (`text`, `background`, `backgroundElement`, `backgroundSelected`, `textSecondary`, `primary`), consumed via `useTheme()` (`src/hooks/use-theme.ts`) by the custom `ThemedText`/`ThemedView` components.
+- `src/constants/theme.ts` — hand-rolled `Colors.light`/`Colors.dark` tokens (`text`, `background`, `backgroundElement`, `backgroundSelected`, `textSecondary`, `mutedText`, `primary`, `inputBackground`, `inputBorder`, `optionSelectedBackground`, `outlinedButtonBackground`/`Border`, …), consumed via `useTheme()` (`src/hooks/use-theme.ts`) by the custom `ThemedText`/`ThemedView` components. `ThemedText` takes a `type` typography variant and a `themeColor` prop (any token key, e.g. `themeColor="mutedText"`) — prefer it over restyling color inline. Some translucent tokens carry alpha-compensation comments (Paper's `Surface` double-layers opacity) — read those before tweaking values.
 - `src/constants/paper-theme.ts` — React Native Paper (MD3) theming, combined with `expo-router`'s React Navigation theme via `adaptNavigationTheme`. **Paper and React Navigation deliberately get separate theme objects** (`CombinedLightTheme`/`CombinedDarkTheme` for `PaperProvider`, `NavigationLightTheme`/`NavigationDarkTheme` for `ThemeProvider`) — Paper's MD3 typescale and React Navigation's `fonts` shape are structurally incompatible, so one merged object doesn't type-check. Don't try to collapse them back into one.
 
 Installed React Native Paper is **v5.15.3**, not the current v6 docs on `oss.callstack.com` (which 403s on fetch — pull docs from `github.com/callstack/react-native-paper`, `docs/5.x/...` path, if verifying an API against the installed version).
 
 ### Testing
 
-- Jest via `jest-expo` preset. Config lives in `package.json`'s `"jest"` field, not a separate file.
+- Jest via `jest-expo` preset. Config lives in `package.json`'s `"jest"` field, not a separate file. `src/i18n/index.ts` is a `setupFiles` entry, so `t()` resolves real strings in tests.
 - `@testing-library/react-native` v14's `render()` is **async** — must be `await`ed, unlike older RNTL versions.
 - CSS imports (`global.css`, `*.module.css`) are stubbed via `moduleNameMapper` → `__mocks__/style-mock.js`; Jest can't parse raw CSS otherwise.
 - Any component using `useTheme()`/`ThemedText`/`ThemedView` needs to be rendered inside `<ThemePreferenceProvider>` in tests, or `useThemePreference()` throws.
