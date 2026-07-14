@@ -12,6 +12,7 @@ export type SelfEmployedType = 'natural-person' | 'company-director';
 export type Intention = 'want-to' | 'dont-plan' | 'not-sure';
 export type OccupationType = 'secondary' | 'main' | 'student' | 'retired';
 export type VatDeclaration = 'quarterly' | 'monthly' | 'small-business-exemption' | 'vat-exempt';
+export type CompanyType = 'srl-bv' | 'sa-nv' | 'snc-vof' | 'asbl-vzw' | 'other';
 
 type OnboardingData = {
   email?: string;
@@ -26,6 +27,11 @@ type OnboardingData = {
   vatDeclaration?: VatDeclaration;
   profession?: string;
   professionCustom?: string;
+  // Company Employment (Path B)
+  companyType?: CompanyType;
+  companyTypeOther?: string;
+  companyName?: string;
+  // Shared tail
   plan?: string;
   referralSource?: string;
   referrer?: string;

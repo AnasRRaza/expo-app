@@ -233,6 +233,24 @@
       "title": "¡Cuenta creada!",
       "subtitle": "Gracias por completar el registro, tu cuenta se creó correctamente.",
       "continueToDashboard": "Continuar al panel"
+    },
+    "companyEmployment": {
+      "title": "Empleo en empresa",
+      "companyTypeSubtitle": "Selecciona el tipo de empresa.",
+      "question": "¿Cuál es tu tipo de ocupación?",
+      "other": "Otro",
+      "otherPlaceholder": "Describe",
+      "continue": "Continuar",
+      "detailsSubtitle": "Introduce tus datos.",
+      "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+      "login": "Iniciar sesión"
+    },
+    "companyName": {
+      "title": "Nombre de la empresa",
+      "subtitle": "Introduce el nombre de tu empresa.",
+      "label": "Nombre de la empresa",
+      "placeholder": "Sky Industries",
+      "continue": "Continuar"
     }
   },
   "common": {
@@ -271,6 +289,9 @@
     },
     "lastName": {
       "required": "El apellido es obligatorio"
+    },
+    "companyName": {
+      "required": "El nombre de la empresa es obligatorio"
     },
     "vat": {
       "required": "El número de IVA es obligatorio",

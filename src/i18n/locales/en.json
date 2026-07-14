@@ -233,6 +233,24 @@
       "title": "Account Created!",
       "subtitle": "Thank you for onboarding, your account was successfully created.",
       "continueToDashboard": "Continue to Dashboard"
+    },
+    "companyEmployment": {
+      "title": "Company Employment",
+      "companyTypeSubtitle": "Select your company type.",
+      "question": "What is your occupation type?",
+      "other": "Other",
+      "otherPlaceholder": "Describe",
+      "continue": "Continue",
+      "detailsSubtitle": "Enter your details.",
+      "alreadyHaveAccount": "Already have an account?",
+      "login": "Login"
+    },
+    "companyName": {
+      "title": "Company Name",
+      "subtitle": "Enter your company name.",
+      "label": "Company Name",
+      "placeholder": "Sky Industries",
+      "continue": "Continue"
     }
   },
   "common": {
@@ -271,6 +289,9 @@
     },
     "lastName": {
       "required": "Last name is required"
+    },
+    "companyName": {
+      "required": "Company name is required"
     },
     "vat": {
       "required": "VAT number is required",

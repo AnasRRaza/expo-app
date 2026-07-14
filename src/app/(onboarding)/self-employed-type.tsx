@@ -20,8 +20,8 @@ export default function SelfEmployedTypeScreen() {
 
   const handleSelect = (value: SelfEmployedType) => {
     setOnboardingData({ selfEmployedType: value });
-    // Natural person → Path A (built). Company director → Path B (placeholder for now).
-    router.push(value === 'natural-person' ? '/occupation-type' : '/next-steps');
+    // Natural person → Path A; Company director → Path B.
+    router.push(value === 'natural-person' ? '/occupation-type' : '/company-type');
   };
 
   return (

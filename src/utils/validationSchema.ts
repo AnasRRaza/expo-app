@@ -62,6 +62,14 @@ export function getFullNameValidationSchema(t: TFunction) {
 
 export type TFullNameForm = Yup.InferType<ReturnType<typeof getFullNameValidationSchema>>;
 
+export function getCompanyNameValidationSchema(t: TFunction) {
+  return Yup.object({
+    companyName: Yup.string().required(t('validation.companyName.required')),
+  });
+}
+
+export type TCompanyNameForm = Yup.InferType<ReturnType<typeof getCompanyNameValidationSchema>>;
+
 export function getManualVatValidationSchema(t: TFunction) {
   return Yup.object({
     // Lenient mock format: 2 country letters + digits, allowing dots/spaces

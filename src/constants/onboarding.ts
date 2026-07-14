@@ -1,4 +1,5 @@
 import type {
+  CompanyType,
   Intention,
   OccupationType,
   ProfessionalStatus,
@@ -16,10 +17,16 @@ export const ONBOARDING_STEP = {
   fullName: 2,
   professionalStatus: 3,
   selfEmployedType: 4,
+  // Path A (Natural Self-Employment)
   occupationType: 5,
   businessDetails: 6,
   vatDeclaration: 7,
   profession: 8,
+  // Path B (Company Employment) — shorter, reuses the same numeric slots
+  companyType: 5,
+  companyName: 6,
+  companyDetails: 7,
+  // Shared tail
   selectPlan: 9,
   setPassword: 10,
   howDidYouFindUs: 11,
@@ -62,6 +69,15 @@ export const VAT_DECLARATION_OPTIONS: Option<VatDeclaration>[] = [
   { value: 'monthly', labelKey: 'onboarding.vatDeclaration.monthly' },
   { value: 'small-business-exemption', labelKey: 'onboarding.vatDeclaration.smallBusiness' },
   { value: 'vat-exempt', labelKey: 'onboarding.vatDeclaration.vatExempt' },
+];
+
+// ── Company Employment (Path B) ───────────────────────────────────────────────
+// Belgian legal forms — abbreviations are the same across locales, so literal labels.
+export const COMPANY_TYPE_OPTIONS: { value: Exclude<CompanyType, 'other'>; label: string }[] = [
+  { value: 'srl-bv', label: 'SRL/BV' },
+  { value: 'sa-nv', label: 'SA/NV' },
+  { value: 'snc-vof', label: 'SNC/VOF' },
+  { value: 'asbl-vzw', label: 'ASBL/VZW' },
 ];
 
 // Static mock of the business a VAT lookup would return (no backend yet).
