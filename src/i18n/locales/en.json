@@ -91,7 +91,152 @@
     "nextSteps": {
       "title": "Almost there",
       "message": "More steps coming soon."
+    },
+    "occupationType": {
+      "title": "Natural Self-Employment",
+      "subtitle": "Select your occupation type.",
+      "question": "What is your occupation type?",
+      "secondary": "Secondary occupation",
+      "main": "Main occupation",
+      "student": "Student",
+      "retired": "Retired"
+    },
+    "businessDetails": {
+      "title": "Natural Self-Employment",
+      "subtitle": "Enter your details.",
+      "question": "Is your business listed below?",
+      "nameLabel": "Name",
+      "companyNumberLabel": "Company Number",
+      "companyAddressLabel": "Company Address",
+      "confirm": "Yes, Continue",
+      "manualCheckbox": "None of these match, enter my VAT number manually",
+      "vatLabel": "VAT Number",
+      "vatPlaceholder": "BE0XXX.XXX.XXX",
+      "continue": "Continue",
+      "chooseError": "Confirm your business or enter your VAT number to continue."
+    },
+    "vatDeclaration": {
+      "title": "Natural Self-Employment",
+      "subtitle": "Select your VAT status.",
+      "question": "Are you registered for VAT?",
+      "quarterly": "Yes, quarterly VAT declaration",
+      "monthly": "Yes, monthly VAT declaration",
+      "smallBusiness": "Yes, small business exemption (< €25,000)",
+      "vatExempt": "No, VAT-exempt profession (healthcare, education, etc.)"
+    },
+    "profession": {
+      "title": "Natural Self-Employment",
+      "subtitle": "Select your occupation type.",
+      "question": "What is your profession?",
+      "dropdownLabel": "Profession",
+      "dropdownPlaceholder": "Select your profession",
+      "cantFind": "Can't find your profession",
+      "customPlaceholder": "Type here",
+      "continue": "Continue",
+      "groups": {
+        "agriculture": {
+          "title": "A – Agriculture, Forestry and Fishing",
+          "cropAnimal": "Crop and animal production",
+          "forestry": "Forestry and logging",
+          "fishing": "Fishing and aquaculture"
+        },
+        "manufacturing": {
+          "title": "C – Manufacturing",
+          "food": "Food and beverage production",
+          "textiles": "Textiles and apparel",
+          "machinery": "Machinery and equipment",
+          "chemical": "Chemical and pharmaceutical manufacturing"
+        },
+        "construction": {
+          "title": "F – Construction",
+          "building": "Building construction",
+          "electrical": "Electrical and plumbing installation",
+          "civil": "Civil engineering"
+        },
+        "trade": {
+          "title": "G – Wholesale and Retail Trade",
+          "retail": "Retail trade (shops, online stores)",
+          "wholesale": "Wholesale distribution",
+          "motor": "Motor vehicle sales and repair"
+        },
+        "transport": {
+          "title": "H – Transportation and Storage",
+          "freight": "Freight and logistics",
+          "passenger": "Passenger transport",
+          "warehousing": "Warehousing"
+        },
+        "info": {
+          "title": "J – Information and Communication",
+          "software": "Software development / IT services",
+          "telecom": "Telecommunications",
+          "media": "Media and publishing"
+        },
+        "finance": {
+          "title": "K – Financial and Insurance Activities",
+          "accounting": "Accounting and auditing",
+          "consulting": "Financial consulting",
+          "insurance": "Insurance services"
+        }
+      }
+    },
+    "selectPlan": {
+      "title": "Select Plan",
+      "subtitle": "Choose the plan that fits your business.",
+      "perMonth": "/month",
+      "exclVat": "excl. VAT",
+      "startFreeTrial": "Start Free Trial",
+      "forVatUsers": "FOR VAT USERS",
+      "essentia": "Essentia",
+      "alreadyHaveAccount": "Already have an account?",
+      "login": "Login",
+      "plans": {
+        "vat": {
+          "chip": "VAT Registered",
+          "description": "Complete solution with VAT compliance"
+        },
+        "nonVat": {
+          "chip": "Non-VAT Registered",
+          "description": "Perfect for freelancers and sole traders"
+        }
+      }
+    },
+    "setPassword": {
+      "title": "Set Your Password",
+      "subtitle": "Create a password by which you will access the platform.",
+      "rule1": "8 to 50 characters",
+      "rule2": "At least 1 uppercase, 1 lowercase, and 1 digit",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "••••••••••••",
+      "confirmPasswordLabel": "Confirm Password",
+      "confirmPasswordPlaceholder": "••••••••••••",
+      "continue": "Continue"
+    },
+    "howDidYouFindUs": {
+      "title": "How did you find us!",
+      "subtitle": "Let us know where you discovered Sandelia.",
+      "question": "Where did you hear about Sandelia?",
+      "dropdownLabel": "Source",
+      "dropdownPlaceholder": "Select an option",
+      "referrerLabel": "Name or email of the referrer (optional)",
+      "referrerPlaceholder": "referred@example.com",
+      "skip": "Skip",
+      "continue": "Continue",
+      "sources": {
+        "recommended": "Someone recommended it to me",
+        "search": "Search engine (Google, etc.)",
+        "socialMedia": "Social media",
+        "advertisement": "Advertisement",
+        "other": "Other"
+      }
+    },
+    "accountCreated": {
+      "title": "Account Created!",
+      "subtitle": "Thank you for onboarding, your account was successfully created.",
+      "continueToDashboard": "Continue to Dashboard"
     }
+  },
+  "common": {
+    "back": "Back"
   },
   "menu": {
     "title": "Menu",
@@ -111,7 +256,11 @@
     },
     "password": {
       "required": "Password is required",
-      "min": "Password must be at least 8 characters"
+      "min": "Password must be at least 8 characters",
+      "max": "Password must be at most 50 characters",
+      "uppercase": "Include at least 1 uppercase letter",
+      "lowercase": "Include at least 1 lowercase letter",
+      "digit": "Include at least 1 digit"
     },
     "confirmPassword": {
       "required": "Please confirm your password",
@@ -122,6 +271,10 @@
     },
     "lastName": {
       "required": "Last name is required"
+    },
+    "vat": {
+      "required": "VAT number is required",
+      "invalid": "Enter a valid VAT number"
     },
     "noWhitespace": "No white spaces are allowed"
   }

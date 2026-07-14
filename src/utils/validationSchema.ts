@@ -61,3 +61,33 @@ export function getFullNameValidationSchema(t: TFunction) {
 }
 
 export type TFullNameForm = Yup.InferType<ReturnType<typeof getFullNameValidationSchema>>;
+
+export function getManualVatValidationSchema(t: TFunction) {
+  return Yup.object({
+    // Lenient mock format: 2 country letters + digits, allowing dots/spaces
+    // (e.g. BE0123.456.789). No backend.
+    vatNumber: Yup.string()
+      .required(t('validation.vat.required'))
+      .matches(/^[A-Za-z]{2}[0-9A-Za-z.\s]{6,20}$/, t('validation.vat.invalid')),
+  });
+}
+
+export type TManualVatForm = Yup.InferType<ReturnType<typeof getManualVatValidationSchema>>;
+
+export function getSetPasswordValidationSchema(t: TFunction) {
+  return Yup.object({
+    password: Yup.string()
+      .required(t('validation.password.required'))
+      .min(8, t('validation.password.min'))
+      .max(50, t('validation.password.max'))
+      .matches(/[A-Z]/, t('validation.password.uppercase'))
+      .matches(/[a-z]/, t('validation.password.lowercase'))
+      .matches(/[0-9]/, t('validation.password.digit'))
+      .matches(/^\S*$/, t('validation.noWhitespace')),
+    confirmPassword: Yup.string()
+      .required(t('validation.confirmPassword.required'))
+      .oneOf([Yup.ref('password')], t('validation.confirmPassword.mustMatch')),
+  });
+}
+
+export type TSetPasswordForm = Yup.InferType<ReturnType<typeof getSetPasswordValidationSchema>>;

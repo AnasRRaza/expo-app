@@ -8,27 +8,36 @@ interface StepProgressProps {
   /** 1-indexed current step. */
   step: number;
   totalSteps: number;
+  /** Number of visible pill segments (design shows 6, independent of the step count). */
+  segments?: number;
 }
 
-// The active segment shows a small leading fill (matches the design's partially
-// filled current step), completed segments are full, upcoming ones empty.
-const ACTIVE_SEGMENT_FILL = 0.15;
+const DEFAULT_SEGMENTS = 6;
 
-function segmentProgress(segment: number, step: number): number {
-  if (segment < step) return 1;
-  if (segment === step) return ACTIVE_SEGMENT_FILL;
-  return 0;
+const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
+
+// The onboarding flow has more steps than the design's 6 pills, so we render a
+// fixed number of segments and fill them proportionally to the overall progress
+// (step / totalSteps). This advances on every screen while keeping the 6-pill look.
+function segmentProgress(index: number, segments: number, overall: number): number {
+  const segStart = index / segments;
+  return clamp01((overall - segStart) * segments);
 }
 
-export default function StepProgress({ step, totalSteps }: StepProgressProps) {
+export default function StepProgress({
+  step,
+  totalSteps,
+  segments = DEFAULT_SEGMENTS,
+}: StepProgressProps) {
   const theme = useTheme();
+  const overall = totalSteps > 0 ? clamp01(step / totalSteps) : 0;
 
   return (
     <View style={styles.row}>
-      {Array.from({ length: totalSteps }, (_, index) => (
+      {Array.from({ length: segments }, (_, index) => (
         <View key={index} style={[styles.segment, { backgroundColor: theme.backgroundSelected }]}>
           <ProgressBar
-            progress={segmentProgress(index + 1, step)}
+            progress={segmentProgress(index, segments, overall)}
             color={theme.primary}
             style={styles.bar}
           />

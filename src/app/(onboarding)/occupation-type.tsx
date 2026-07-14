@@ -8,20 +8,23 @@ import AuthStepHeader from '@/components/auth-step-header';
 import { ScreenBackground } from '@/components/screen-background';
 import { ThemedText } from '@/components/themed-text';
 import OptionCard from '@/components/ui/option-card';
-import { ONBOARDING_TOTAL_STEPS, SELF_EMPLOYED_TYPE_OPTIONS } from '@/constants/onboarding';
-import type { SelfEmployedType } from '@/stores/use-auth-store';
+import {
+  OCCUPATION_TYPE_OPTIONS,
+  ONBOARDING_STEP,
+  ONBOARDING_TOTAL_STEPS,
+} from '@/constants/onboarding';
+import type { OccupationType } from '@/stores/use-auth-store';
 import { useAuthStore } from '@/stores/use-auth-store';
 
-export default function SelfEmployedTypeScreen() {
+export default function OccupationTypeScreen() {
   const { t } = useTranslation();
   const router = useRouter();
-  const selfEmployedType = useAuthStore((state) => state.onboarding.selfEmployedType);
+  const occupationType = useAuthStore((state) => state.onboarding.occupationType);
   const setOnboardingData = useAuthStore((state) => state.setOnboardingData);
 
-  const handleSelect = (value: SelfEmployedType) => {
-    setOnboardingData({ selfEmployedType: value });
-    // Natural person → Path A (built). Company director → Path B (placeholder for now).
-    router.push(value === 'natural-person' ? '/occupation-type' : '/next-steps');
+  const handleSelect = (value: OccupationType) => {
+    setOnboardingData({ occupationType: value });
+    router.push('/business-details');
   };
 
   return (
@@ -32,25 +35,29 @@ export default function SelfEmployedTypeScreen() {
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
         >
-          <AuthStepHeader step={4} totalSteps={ONBOARDING_TOTAL_STEPS} />
+          <AuthStepHeader
+            step={ONBOARDING_STEP.occupationType}
+            totalSteps={ONBOARDING_TOTAL_STEPS}
+            backVariant="text"
+          />
 
           <View style={styles.header}>
-            <ThemedText style={styles.title}>{t('onboarding.selfEmployed.title')}</ThemedText>
+            <ThemedText style={styles.title}>{t('onboarding.occupationType.title')}</ThemedText>
             <ThemedText type="small" themeColor="mutedText">
-              {t('onboarding.selfEmployed.subtitle')}
+              {t('onboarding.occupationType.subtitle')}
             </ThemedText>
           </View>
 
           <ThemedText type="small" style={styles.question}>
-            {t('onboarding.selfEmployed.question')}
+            {t('onboarding.occupationType.question')}
           </ThemedText>
 
           <View style={styles.options}>
-            {SELF_EMPLOYED_TYPE_OPTIONS.map((option) => (
+            {OCCUPATION_TYPE_OPTIONS.map((option) => (
               <OptionCard
                 key={option.value}
                 label={t(option.labelKey)}
-                selected={selfEmployedType === option.value}
+                selected={occupationType === option.value}
                 onPress={() => handleSelect(option.value)}
               />
             ))}

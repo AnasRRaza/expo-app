@@ -91,7 +91,152 @@
     "nextSteps": {
       "title": "Casi listo",
       "message": "Más pasos próximamente."
+    },
+    "occupationType": {
+      "title": "Autónomo persona física",
+      "subtitle": "Selecciona tu tipo de ocupación.",
+      "question": "¿Cuál es tu tipo de ocupación?",
+      "secondary": "Ocupación secundaria",
+      "main": "Ocupación principal",
+      "student": "Estudiante",
+      "retired": "Jubilado"
+    },
+    "businessDetails": {
+      "title": "Autónomo persona física",
+      "subtitle": "Introduce tus datos.",
+      "question": "¿Aparece tu negocio a continuación?",
+      "nameLabel": "Nombre",
+      "companyNumberLabel": "Número de empresa",
+      "companyAddressLabel": "Dirección de la empresa",
+      "confirm": "Sí, continuar",
+      "manualCheckbox": "Ninguno coincide, introducir mi número de IVA manualmente",
+      "vatLabel": "Número de IVA",
+      "vatPlaceholder": "BE0XXX.XXX.XXX",
+      "continue": "Continuar",
+      "chooseError": "Confirma tu negocio o introduce tu número de IVA para continuar."
+    },
+    "vatDeclaration": {
+      "title": "Autónomo persona física",
+      "subtitle": "Selecciona tu situación de IVA.",
+      "question": "¿Estás registrado para el IVA?",
+      "quarterly": "Sí, declaración de IVA trimestral",
+      "monthly": "Sí, declaración de IVA mensual",
+      "smallBusiness": "Sí, exención para pequeñas empresas (< 25.000 €)",
+      "vatExempt": "No, profesión exenta de IVA (sanidad, educación, etc.)"
+    },
+    "profession": {
+      "title": "Autónomo persona física",
+      "subtitle": "Selecciona tu tipo de ocupación.",
+      "question": "¿Cuál es tu profesión?",
+      "dropdownLabel": "Profesión",
+      "dropdownPlaceholder": "Selecciona tu profesión",
+      "cantFind": "No encuentras tu profesión",
+      "customPlaceholder": "Escribe aquí",
+      "continue": "Continuar",
+      "groups": {
+        "agriculture": {
+          "title": "A – Agricultura, silvicultura y pesca",
+          "cropAnimal": "Producción agrícola y ganadera",
+          "forestry": "Silvicultura y explotación forestal",
+          "fishing": "Pesca y acuicultura"
+        },
+        "manufacturing": {
+          "title": "C – Manufactura",
+          "food": "Producción de alimentos y bebidas",
+          "textiles": "Textiles y confección",
+          "machinery": "Maquinaria y equipos",
+          "chemical": "Fabricación química y farmacéutica"
+        },
+        "construction": {
+          "title": "F – Construcción",
+          "building": "Construcción de edificios",
+          "electrical": "Instalación eléctrica y de fontanería",
+          "civil": "Ingeniería civil"
+        },
+        "trade": {
+          "title": "G – Comercio mayorista y minorista",
+          "retail": "Comercio minorista (tiendas, tiendas online)",
+          "wholesale": "Distribución mayorista",
+          "motor": "Venta y reparación de vehículos"
+        },
+        "transport": {
+          "title": "H – Transporte y almacenamiento",
+          "freight": "Transporte de mercancías y logística",
+          "passenger": "Transporte de pasajeros",
+          "warehousing": "Almacenamiento"
+        },
+        "info": {
+          "title": "J – Información y comunicación",
+          "software": "Desarrollo de software / servicios TI",
+          "telecom": "Telecomunicaciones",
+          "media": "Medios y publicación"
+        },
+        "finance": {
+          "title": "K – Actividades financieras y de seguros",
+          "accounting": "Contabilidad y auditoría",
+          "consulting": "Consultoría financiera",
+          "insurance": "Servicios de seguros"
+        }
+      }
+    },
+    "selectPlan": {
+      "title": "Selecciona un plan",
+      "subtitle": "Elige el plan que se adapta a tu negocio.",
+      "perMonth": "/mes",
+      "exclVat": "IVA no incl.",
+      "startFreeTrial": "Iniciar prueba gratuita",
+      "forVatUsers": "PARA USUARIOS DE IVA",
+      "essentia": "Essentia",
+      "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+      "login": "Iniciar sesión",
+      "plans": {
+        "vat": {
+          "chip": "Registrado en IVA",
+          "description": "Solución completa con cumplimiento de IVA"
+        },
+        "nonVat": {
+          "chip": "No registrado en IVA",
+          "description": "Perfecto para autónomos y trabajadores individuales"
+        }
+      }
+    },
+    "setPassword": {
+      "title": "Establece tu contraseña",
+      "subtitle": "Crea una contraseña con la que accederás a la plataforma.",
+      "rule1": "De 8 a 50 caracteres",
+      "rule2": "Al menos 1 mayúscula, 1 minúscula y 1 dígito",
+      "passwordLabel": "Contraseña",
+      "passwordPlaceholder": "••••••••••••",
+      "confirmPasswordLabel": "Confirmar contraseña",
+      "confirmPasswordPlaceholder": "••••••••••••",
+      "continue": "Continuar"
+    },
+    "howDidYouFindUs": {
+      "title": "¡Cómo nos encontraste!",
+      "subtitle": "Cuéntanos dónde descubriste Sandelia.",
+      "question": "¿Dónde oíste hablar de Sandelia?",
+      "dropdownLabel": "Fuente",
+      "dropdownPlaceholder": "Selecciona una opción",
+      "referrerLabel": "Nombre o correo de quien te recomendó (opcional)",
+      "referrerPlaceholder": "referido@example.com",
+      "skip": "Omitir",
+      "continue": "Continuar",
+      "sources": {
+        "recommended": "Alguien me lo recomendó",
+        "search": "Motor de búsqueda (Google, etc.)",
+        "socialMedia": "Redes sociales",
+        "advertisement": "Publicidad",
+        "other": "Otro"
+      }
+    },
+    "accountCreated": {
+      "title": "¡Cuenta creada!",
+      "subtitle": "Gracias por completar el registro, tu cuenta se creó correctamente.",
+      "continueToDashboard": "Continuar al panel"
     }
+  },
+  "common": {
+    "back": "Atrás"
   },
   "menu": {
     "title": "Menú",
@@ -111,7 +256,11 @@
     },
     "password": {
       "required": "La contraseña es obligatoria",
-      "min": "La contraseña debe tener al menos 8 caracteres"
+      "min": "La contraseña debe tener al menos 8 caracteres",
+      "max": "La contraseña debe tener como máximo 50 caracteres",
+      "uppercase": "Incluye al menos 1 letra mayúscula",
+      "lowercase": "Incluye al menos 1 letra minúscula",
+      "digit": "Incluye al menos 1 dígito"
     },
     "confirmPassword": {
       "required": "Confirma tu contraseña",
@@ -122,6 +271,10 @@
     },
     "lastName": {
       "required": "El apellido es obligatorio"
+    },
+    "vat": {
+      "required": "El número de IVA es obligatorio",
+      "invalid": "Introduce un número de IVA válido"
     },
     "noWhitespace": "No se permiten espacios en blanco"
   }

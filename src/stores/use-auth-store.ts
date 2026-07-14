@@ -10,6 +10,8 @@ type Session = {
 export type ProfessionalStatus = 'yes' | 'no' | 'dont-know';
 export type SelfEmployedType = 'natural-person' | 'company-director';
 export type Intention = 'want-to' | 'dont-plan' | 'not-sure';
+export type OccupationType = 'secondary' | 'main' | 'student' | 'retired';
+export type VatDeclaration = 'quarterly' | 'monthly' | 'small-business-exemption' | 'vat-exempt';
 
 type OnboardingData = {
   email?: string;
@@ -18,6 +20,16 @@ type OnboardingData = {
   professionalStatus?: ProfessionalStatus;
   selfEmployedType?: SelfEmployedType;
   intention?: Intention;
+  // Natural Self-Employment (Path A)
+  occupationType?: OccupationType;
+  business?: { confirmed?: boolean; vatNumber?: string };
+  vatDeclaration?: VatDeclaration;
+  profession?: string;
+  professionCustom?: string;
+  plan?: string;
+  referralSource?: string;
+  referrer?: string;
+  // NOTE: the account password is intentionally never stored here (persisted to disk).
 };
 
 type AuthState = {
